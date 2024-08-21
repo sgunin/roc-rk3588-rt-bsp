@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+ <default sync-j="4" sync-c="true" revision="master"/>
+
+ <remote fetch="." name="firefly-linux"/>
+ <default remote="firefly-linux" dest-branch="rk3588/firefly" revision="refs/tags/rk3588/linux_yocto_release"/>
+
+ <project name="yocto/meta-openembedded" path="yocto/meta-openembedded" />
+ <project name="yocto/meta-qt5" path="yocto/meta-qt5" />
+ <project name="yocto/meta-rockchip" path="yocto/meta-rockchip" />
+ <project name="yocto/meta-clang" path="yocto/meta-clang" />
+ <project name="yocto/meta-browser" path="yocto/meta-browser" />
+ <project name="yocto/meta-lts-mixins" path="yocto/meta-lts-mixins" />
+ <project name="yocto/poky" path="yocto/poky" />
+  <linkfile dest="yocto/README.md" src="build/README_yocto.md"/>
+  <linkfile dest="yocto/poky/oe-init-build-env" src="build/oe-init-build-env"/>
+ </project>
+
+ <remote name="firefly-dev" fetch="https://github.com/sgunin"/>
+ <project remote="firefly-dev" name="meta-firefly-dev" path="sources/meta-firefly-dev" revision="main">
+  <linkfile src="local.conf" dest="build/conf/local.conf"/>
+  <linkfile src="bblayers.conf" dest="build/conf/bblayers.conf"/>
+ </project>
+			      
+</manifest>

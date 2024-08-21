@@ -1,2 +1,55 @@
 # roc-rk3588-rt-bsp
-BSP for ROC-RK3588RT board
+Hardware platform board support files (BSP) for ROC-RK3588-RT
+
+Страница продукта [ROC-RK3588-RT](https://en.t-firefly.com/product/industry/rocrk3588rt)
+
+Описание [WiKi](https://wiki.t-firefly.com/en/ROC-RK3588-RT/index.html)
+
+Файлы для скачивания [Downloads](https://en.t-firefly.com/doc/download/207.html)
+
+Репозиторий FireFly [GitHub](https://github.com/T-Firefly)
+
+Репозиторий FireFly linux [](https://gitlab.com/firefly-linux)
+
+# Используемые источники
+
+- Yocto: GIT https://git.yoctoproject.org/git. Layers: 
+	=> poky - Poky Build Tool and Metadata
+- OpenEmbedded: GIT https://github.com/openembedded. Layers: 
+	=> meta-openembedded - Collection of OpenEmbedded layers
+- Freescale Community: GIT https://github.com/Freescale. Layers: 
+	=> base,
+	=> meta-freescale - Layer containing NXP hardware support metadata, 
+	=> meta-freescale-3rdparty - OpenEmbedded/Yocto BSP layer for Freescale's ARM based platforms,
+	=> meta-freescale-distro - OpenEmbedded/Yocto BSP layer for Freescale's ARM based platforms
+- NXP IMX Support: GIT https://github.com/nxp-imx-support. Layers: 
+	=> meta-nxp-demo-experience - NXP Demo Experience Yocto Project Layer
+- MYiR Dev: GIT https://github.com/sgunin. Layers: 
+	=> meta-myir - i.MX Linux Yocto Project BSP 5.10.9_1.0.0
+- Clang: GIT https://github.com/kraj. Layers:
+	=> meta-clang - Clang C/C++ cross compiler and runtime for OpenEmbedded/Yocto Project
+- Python2: GIT https://git.openembedded.org. Layers: 
+	=> meta-python2 - Layer enabling legacy python2 support after EOL
+- QT5: GIT https://github.com/meta-qt5. Layers: 
+	=> meta-qt5 - QT5 layer for openembedded
+
+# Установка системы сборки Yocto в Ubuntu 18 
+```
+$: sudo apt install -y repo git python
+$: sudo apt-get install repo git ssh make gcc libssl-dev liblz4-tool expect g++ patchelf chrpath gawk texinfo chrpath diffstat binfmt-support qemu-user-static live-build bison flex fakeroot cmake gcc-multilib g++-multilib unzip device-tree-compiler ncurses-dev
+$: sudo locale-gen en_US.UTF-8
+```
+
+Инициализация репозитория в каталог <SomeDir>, например, roc-rk3588-rt-bsp
+```
+$: mkdir <SomeDir>
+$: cd <SomeDir>
+$: repo init -u https://github.com/sgunin/roc-rk3588-rt-bsp.git default.xml
+$: repo sync
+```
+
+Настройка переменных среды и сборка образа image-minimal
+```
+$: source oe-init-build-env
+$: MACHINE=roc-rk3588-rt bitbake core-image-minimal
+```
