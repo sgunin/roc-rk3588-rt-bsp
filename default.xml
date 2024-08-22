@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 
- <default sync-j="4" sync-c="true" revision="master"/>
+ <default sync-j="4" sync-c="true"/>
 
  <remote fetch="." name="firefly-linux"/>
  <default remote="firefly-linux" dest-branch="rk3588/firefly" revision="refs/tags/rk3588/linux_yocto_release"/>
