@@ -16,7 +16,7 @@
  <linkfile dest="README.md" src="build/README_yocto.md"/>
  <linkfile dest="oe-init-build-env" src="oe-init-build-env"/>
 </project>
-<project name="meta-firefly-dev" remote="firefly-dev" path="meta-firefly-dev">
+<project name="meta-firefly-dev" remote="firefly-dev" path="source/meta-firefly-dev">
  <linkfile src="local.conf" dest="build/conf/local.conf"/>
  <linkfile src="bblayers.conf" dest="build/conf/bblayers.conf"/>
 </project>
