@@ -3,8 +3,8 @@
 
 <default sync-j="4" sync-c="true"/>
 	
-<remote name="firefly-linux" dest-branch="rk3588/firefly" revision="refs/tags/rk3588/linux_yocto_release"/>
-<remote name="firefly-dev" fetch="https://github.com/sgunin" revision="main"/>
+<remote name="firefly-linux" fetch="https://gitlab.com/firefly-linux" revision="refs/tags/rk3588/linux_yocto_release"/>
+<remote name="firefly-dev" fetch="https://github.com/sgunin" rev:wq!ision="main"/>
 	
 <project name="meta-openembedded" remote="firefly-linux" path="yocto/meta-openembedded" />
 <project name="meta-qt5" remote="firefly-linux" path="yocto/meta-qt5" />
