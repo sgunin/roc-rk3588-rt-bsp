@@ -51,6 +51,6 @@ $: repo sync
 
 Настройка переменных среды и сборка образа image-minimal
 ```
-$: source oe-init-build-env
-$: MACHINE=roc-rk3588-rt bitbake core-image-minimal
+$: MACHINE=roc-rk3588-rt source setup-environment build
+$: bitbake core-image-minimal
 ```
