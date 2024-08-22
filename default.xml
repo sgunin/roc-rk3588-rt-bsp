@@ -12,7 +12,7 @@
  <project name="yocto/meta-clang" path="yocto/meta-clang" />
  <project name="yocto/meta-browser" path="yocto/meta-browser" />
  <project name="yocto/meta-lts-mixins" path="yocto/meta-lts-mixins" />
- <project name="yocto/poky" path="yocto/poky" />
+ <project name="yocto/poky" path="yocto/poky" >
   <linkfile dest="yocto/README.md" src="build/README_yocto.md"/>
   <linkfile dest="yocto/poky/oe-init-build-env" src="build/oe-init-build-env"/>
  </project>
