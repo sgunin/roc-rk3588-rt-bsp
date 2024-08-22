@@ -17,8 +17,8 @@
   <linkfile dest="yocto/poky/oe-init-build-env" src="build/oe-init-build-env"/>
  </project>
 
- <remote name="firefly-dev" fetch="https://github.com/sgunin"/>
- <project remote="firefly-dev" name="meta-firefly-dev" path="sources/meta-firefly-dev" revision="main">
+ <remote name="firefly-dev" fetch="https://github.com/sgunin" revision="main"/>
+ <project remote="firefly-dev" name="meta-firefly-dev" path="sources/meta-firefly-dev">
   <linkfile src="local.conf" dest="build/conf/local.conf"/>
   <linkfile src="bblayers.conf" dest="build/conf/bblayers.conf"/>
  </project>
