@@ -44,7 +44,7 @@ $: sudo locale-gen en_US.UTF-8
 ```
 $: mkdir <SomeDir>
 $: cd <SomeDir>
-$: repo init -u https://github.com/sgunin/roc-rk3588-rt-bsp.git default.xml
+$: repo init --no-clone-bundle --repo-url https://gitlab.com/firefly-linux/git-repo.git -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m default.xml -b main
 $: repo sync
 ```
 

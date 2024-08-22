@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 
- <default sync-j="4" sync-c="true"/>
-
  <remote fetch="." name="firefly-linux"/>
- <default remote="firefly-linux" dest-branch="rk3588/firefly" revision="refs/tags/rk3588/linux_yocto_release"/>
+ <default remote="firefly-linux" dest-branch="rk3588/firefly" revision="refs/tags/rk3588/linux_yocto_release" sync-j="4" sync-c="true"/>
 
  <project name="yocto/meta-openembedded" path="yocto/meta-openembedded" />
  <project name="yocto/meta-qt5" path="yocto/meta-qt5" />
