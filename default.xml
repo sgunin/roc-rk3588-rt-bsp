@@ -4,15 +4,15 @@
 <default sync-j="4" sync-c="true"/>
 	
 <remote name="firefly-linux" fetch="https://gitlab.com/firefly-linux" revision="refs/tags/rk3588/linux_yocto_release"/>
-<remote name="firefly-dev" fetch="https://github.com/sgunin" rev:wq!ision="main"/>
+<remote name="firefly-dev" fetch="https://github.com/sgunin" revision="main"/>
 	
-<project name="meta-openembedded" remote="firefly-linux" path="yocto/meta-openembedded" />
-<project name="meta-qt5" remote="firefly-linux" path="yocto/meta-qt5" />
-<project name="meta-rockchip" remote="firefly-linux" path="yocto/meta-rockchip" />
-<project name="meta-clang" remote="firefly-linux" path="yocto/meta-clang" />
-<project name="meta-browser" remote="firefly-linux" path="yocto/meta-browser" />
-<project name="meta-lts-mixins" remote="firefly-linux" path="yocto/meta-lts-mixins" />
-<project name="poky" remote="firefly-linux" path="yocto/poky" >
+<project name="meta-openembedded" remote="firefly-linux" path="yocto/meta-openembedded"/>
+<project name="meta-qt5" remote="firefly-linux" path="yocto/meta-qt5"/>
+<project name="meta-rockchip" remote="firefly-linux" path="yocto/meta-rockchip"/>
+<project name="meta-clang" remote="firefly-linux" path="yocto/meta-clang"/>
+<project name="meta-browser" remote="firefly-linux" path="yocto/meta-browser"/>
+<project name="meta-lts-mixins" remote="firefly-linux" path="yocto/meta-lts-mixins"/>
+<project name="poky" remote="firefly-linux" path="yocto/poky">
  <linkfile dest="yocto/README.md" src="build/README_yocto.md"/>
  <linkfile dest="yocto/poky/oe-init-build-env" src="build/oe-init-build-env"/>
 </project>
