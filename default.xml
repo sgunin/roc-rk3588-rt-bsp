@@ -12,9 +12,7 @@
 <project name="meta-clang" remote="firefly-linux" path="sources/meta-clang"/>
 <project name="meta-browser" remote="firefly-linux" path="sources/meta-browser"/>
 <project name="meta-lts-mixins" remote="firefly-linux" path="sources/meta-lts-mixins"/>
-<project name="poky" remote="firefly-linux" path="sources/poky">
- <linkfile dest="README.md" src="build/README_yocto.md"/>
-</project>
+<project name="poky" remote="firefly-linux" path="sources/poky"/>
 <project name="meta-firefly-dev" remote="firefly-dev" path="sources/meta-firefly-dev">
  <linkfile src="local.conf" dest="build/conf/local.conf"/>
  <linkfile src="bblayers.conf" dest="build/conf/bblayers.conf"/>
