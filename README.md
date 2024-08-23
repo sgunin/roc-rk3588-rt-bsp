@@ -11,19 +11,21 @@ Hardware platform board support files (BSP) for ROC-RK3588-RT
 
 Репозиторий FireFly linux [GitHub FireFly-linux](https://gitlab.com/firefly-linux)
 
+Репозиторий FireFly JeffyCN[GitHub JeffyCN](https://github.com/JeffyCN)
+
 # Используемые источники
 
-- FireFly linux: Git https://gitlab.com/firefly-linux/yocto. Layers:
-  	=> poky - Poky Build Tool and Metadata;
-	=> meta-openembedded - Collection of OpenEmbedded layers;
-	=> meta-clang - Clang C/C++ cross compiler and runtime for OpenEmbedded/Yocto Project;
-	=> meta-python2 - Layer enabling legacy python2 support after EOL;
-	=> meta-qt5 - QT5 layer for openembedded;
-	=> meta-lts-mixins - "Mixin" layer for adding latest Docker versions into the Yocto Project LTS;
-	=> meta-browser - Yocto BSP layer for Web Browsers;
-	=> meta-rockchip - Yocto BSP layer for the Rockchip SOC boards/
-- FireFly dev: Git https://github.com/sgunin. Layers:
-  	=> meta-firefly-dev - Кастомный слой для разработки под платформу
+1. FireFly linux: Git https://gitlab.com/firefly-linux/yocto. Layers:
++ poky - Poky Build Tool and Metadata;
++ meta-openembedded - Collection of OpenEmbedded layers;
++ meta-clang - Clang C/C++ cross compiler and runtime for OpenEmbedded/Yocto Project;
++ meta-python2 - Layer enabling legacy python2 support after EOL;
++ meta-qt5 - QT5 layer for openembedded;
++ meta-lts-mixins - "Mixin" layer for adding latest Docker versions into the Yocto Project LTS;
++ meta-browser - Yocto BSP layer for Web Browsers;
++ meta-rockchip - Yocto BSP layer for the Rockchip SOC boards.
+2. FireFly dev: Git https://github.com/sgunin. Layers:
++ meta-firefly-dev - Кастомный слой для разработки под платформу.
 
 # Установка системы сборки Yocto в Ubuntu 18 
 ```
