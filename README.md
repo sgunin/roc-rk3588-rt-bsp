@@ -1,5 +1,5 @@
-# roc-rk3588-rt-bsp
-Hardware platform board support files (BSP) for ROC-RK3588-RT
+Hardware platform board support files (BSP) for ROC-RK3588-RT.
+Yocto release 5.0 (scarthgap)
 
 Страница продукта [ROC-RK3588-RT](https://en.t-firefly.com/product/industry/rocrk3588rt)
 
@@ -39,7 +39,7 @@ $: sudo locale-gen en_US.UTF-8
 ```
 $: mkdir <SomeDir>
 $: cd <SomeDir>
-$: repo init --no-clone-bundle --repo-url https://gitlab.com/firefly-linux/git-repo.git -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m default.xml -b main
+$: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m default.xml -b scarthgap
 $: repo sync
 ```
 

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
+ <notice>Yocto release 5.0 (scarthgap)</notice>      
+ <notice>Sources have been sync'd successfully.</notice>
 
-<default sync-j="4" sync-c="true"/>
-	
-<remote name="firefly-linux" fetch="https://gitlab.com/firefly-linux/yocto" revision="rk3588/firefly"/>
-<remote name="firefly-dev" fetch="https://github.com/sgunin" revision="main"/>
-	
-<project name="meta-openembedded" remote="firefly-linux" path="sources/meta-openembedded"/>
-<project name="meta-qt5" remote="firefly-linux" path="sources/meta-qt5"/>
-<project name="meta-rockchip" remote="firefly-linux" path="sources/meta-rockchip"/>
-<project name="meta-clang" remote="firefly-linux" path="sources/meta-clang"/>
-<project name="meta-browser" remote="firefly-linux" path="sources/meta-browser"/>
-<project name="meta-lts-mixins" remote="firefly-linux" path="sources/meta-lts-mixins"/>
-<project name="poky" remote="firefly-linux" path="sources/poky"/>
-<project name="meta-firefly-dev" remote="firefly-dev" path="sources/meta-firefly-dev">
- <linkfile src="local.conf" dest="build/conf/local.conf"/>
- <linkfile src="bblayers.conf" dest="build/conf/bblayers.conf"/>
- <linkfile src="setup-environment" dest="setup-environment"/>
-</project>
+ <default revision="scarthgap" sync-j="8" sync-c="true"/>
+
+ <remote name="oe" fetch="https://git.openembedded.org"/>
+ <remote name="yocto" fetch="https://git.yoctoproject.org/git"/>
+ <remote name="clang" fetch="https://github.com/kraj"/>
+ <remote name="jeffycn" fetch="https://github.com/JeffyCN/"/>
+ <remote name="firefly-dev" fetch="https://github.com/sgunin"/>
+
+ <project name="poky" remote="yocto" path="sources/poky" revision="f450ddee3e1299dc80e1641c38bbd1699764ac87" dest-branch="scarthgap"/>
+ <project name="meta-openembedded" remote="oe" path="sources/meta-openembedded" revision="a72010b414ee3d73888ac9cb4e310e8f05e13aea" dest-branch="scarthgap"/>
+ <project name="meta-clang" remote="clang" path="sources/meta-clang" revision="e7dceb1c92caf7f21ef1d7b49c85328c30cffd90" dest-branch="scarthgap"/>
+ <project name="yocto-conf" remote="jeffycn" path="sources/meta-rockchip" revision="bc4574986613ad98b7e8d397c8f4ed27bae64ee8" dest-branch="scarthgap"/>
+ <project name="meta-firefly-dev" remote="firefly-dev" path="sources/meta-firefly-dev" dest-branch="scarthgap">
+  <linkfile src="local.conf" dest="build/conf/local.conf"/>
+  <linkfile src="bblayers.conf" dest="build/conf/bblayers.conf"/>
+  <linkfile src="setup-environment" dest="setup-environment"/>
+ </project>
 			      
 </manifest>
