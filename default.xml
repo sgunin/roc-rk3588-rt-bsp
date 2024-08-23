@@ -13,7 +13,7 @@
  <project name="poky" remote="yocto" path="sources/poky" revision="f450ddee3e1299dc80e1641c38bbd1699764ac87" dest-branch="scarthgap"/>
  <project name="meta-openembedded" remote="oe" path="sources/meta-openembedded" revision="a72010b414ee3d73888ac9cb4e310e8f05e13aea" dest-branch="scarthgap"/>
  <project name="meta-clang" remote="clang" path="sources/meta-clang" revision="e7dceb1c92caf7f21ef1d7b49c85328c30cffd90" dest-branch="scarthgap"/>
- <project name="meta-rockchip" remote="jeffycn" path="sources/meta-rockchip" revision="bc4574986613ad98b7e8d397c8f4ed27bae64ee8" dest-branch="scarthgap"/>
+ <project name="meta-rockchip" remote="jeffycn" path="sources/meta-rockchip" revision="5404e63cab63b1a09138ad4b41a97e0e1efa7e54" dest-branch="scarthgap"/>
  <project name="meta-firefly-dev" remote="firefly-dev" path="sources/meta-firefly-dev" dest-branch="scarthgap">
   <linkfile src="local.conf" dest="build/conf/local.conf"/>
   <linkfile src="bblayers.conf" dest="build/conf/bblayers.conf"/>
