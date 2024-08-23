@@ -11,7 +11,7 @@ Hardware platform board support files (BSP) for ROC-RK3588-RT
 
 Репозиторий FireFly linux [GitHub FireFly-linux](https://gitlab.com/firefly-linux)
 
-Репозиторий FireFly JeffyCN[GitHub JeffyCN](https://github.com/JeffyCN)
+Репозиторий FireFly JeffyCN [GitHub JeffyCN](https://github.com/JeffyCN)
 
 # Используемые источники
 
