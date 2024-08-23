@@ -13,25 +13,17 @@ Hardware platform board support files (BSP) for ROC-RK3588-RT
 
 # Используемые источники
 
-- Yocto: GIT https://git.yoctoproject.org/git. Layers: 
-	=> poky - Poky Build Tool and Metadata
-- OpenEmbedded: GIT https://github.com/openembedded. Layers: 
-	=> meta-openembedded - Collection of OpenEmbedded layers
-- Freescale Community: GIT https://github.com/Freescale. Layers: 
-	=> base,
-	=> meta-freescale - Layer containing NXP hardware support metadata, 
-	=> meta-freescale-3rdparty - OpenEmbedded/Yocto BSP layer for Freescale's ARM based platforms,
-	=> meta-freescale-distro - OpenEmbedded/Yocto BSP layer for Freescale's ARM based platforms
-- NXP IMX Support: GIT https://github.com/nxp-imx-support. Layers: 
-	=> meta-nxp-demo-experience - NXP Demo Experience Yocto Project Layer
-- MYiR Dev: GIT https://github.com/sgunin. Layers: 
-	=> meta-myir - i.MX Linux Yocto Project BSP 5.10.9_1.0.0
-- Clang: GIT https://github.com/kraj. Layers:
-	=> meta-clang - Clang C/C++ cross compiler and runtime for OpenEmbedded/Yocto Project
-- Python2: GIT https://git.openembedded.org. Layers: 
-	=> meta-python2 - Layer enabling legacy python2 support after EOL
-- QT5: GIT https://github.com/meta-qt5. Layers: 
-	=> meta-qt5 - QT5 layer for openembedded
+- FireFly linux: Git https://gitlab.com/firefly-linux/yocto. Layers:
+  	=> poky - Poky Build Tool and Metadata;
+	=> meta-openembedded - Collection of OpenEmbedded layers;
+	=> meta-clang - Clang C/C++ cross compiler and runtime for OpenEmbedded/Yocto Project;
+	=> meta-python2 - Layer enabling legacy python2 support after EOL;
+	=> meta-qt5 - QT5 layer for openembedded;
+	=> meta-lts-mixins - "Mixin" layer for adding latest Docker versions into the Yocto Project LTS;
+	=> meta-browser - Yocto BSP layer for Web Browsers;
+	=> meta-rockchip - Yocto BSP layer for the Rockchip SOC boards/
+- FireFly dev: Git https://github.com/sgunin. Layers:
+  	=> meta-firefly-dev - Кастомный слой для разработки под платформу
 
 # Установка системы сборки Yocto в Ubuntu 18 
 ```
