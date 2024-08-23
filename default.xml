@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
- <notice>Yocto release 5.0 (scarthgap)</notice>      
- <notice>Sources have been sync'd successfully.</notice>
+ <notice>Yocto release 5.0 (scarthgap)</notice>
 
  <default revision="scarthgap" sync-j="8" sync-c="true"/>
 
