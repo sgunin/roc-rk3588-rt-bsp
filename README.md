@@ -43,6 +43,13 @@ $: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.gi
 $: repo sync
 ```
 
+В случае, если предполагается использовать слой meta-rockchip из репозитория https://gitlab.com/firefly-linux вместо https://github.com/JeffyCN, необходимо инициализировать следующим образом:
+```
+$: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m scarthgap.xml -b scarthgap
+$: repo sync
+```
+
+
 Настройка переменных среды и сборка образа image-minimal
 ```
 $: MACHINE=roc-rk3588-rt source setup-environment build
