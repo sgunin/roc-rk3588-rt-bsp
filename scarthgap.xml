@@ -14,7 +14,7 @@
  <project name="meta-openembedded" remote="oe" path="sources/meta-openembedded"/>
  <project name="meta-clang" remote="clang" path="sources/meta-clang"/>
  <project name="meta-rockchip" remote="yocto/firefly-linux" path="sources/meta-rockchip" revision="rk3588/firefly"/>
- <project name="meta-firefly-dev" remote="firefly-dev" path="sources/meta-firefly-dev">
+ <project name="meta-firefly-dev" remote="firefly-dev" path="sources/meta-firefly-dev" revision="scarthgap-dev">
   <linkfile src="local.conf" dest="build/conf/local.conf"/>
   <linkfile src="bblayers.conf" dest="build/conf/bblayers.conf"/>
   <linkfile src="setup-environment" dest="setup-environment"/>
