@@ -7,14 +7,14 @@
  <remote name="oe" fetch="https://git.openembedded.org"/>
  <remote name="yocto" fetch="https://git.yoctoproject.org/git"/>
  <remote name="clang" fetch="https://github.com/kraj"/>
- <remote name="firefly-linux" fetch="https://gitlab.com/firefly-linux/yocto"/>
- <remote name="firefly-dev" fetch="https://github.com/sgunin"/>
+ <remote name="firefly-linux" fetch="https://gitlab.com/firefly-linux/yocto" revision="rk3588/firefly"/>
+ <remote name="firefly-dev" fetch="https://github.com/sgunin" revision="scarthgap-dev"/>
 
  <project name="poky" remote="yocto" path="sources/poky"/>
  <project name="meta-openembedded" remote="oe" path="sources/meta-openembedded"/>
  <project name="meta-clang" remote="clang" path="sources/meta-clang"/>
- <project name="meta-rockchip" remote="firefly-linux" path="sources/meta-rockchip" revision="rk3588/firefly"/>
- <project name="meta-firefly-dev" remote="firefly-dev" path="sources/meta-firefly-dev" revision="scarthgap-dev">
+ <project name="meta-rockchip" remote="firefly-linux" path="sources/meta-rockchip"/>
+ <project name="meta-firefly-dev" remote="firefly-dev" path="sources/meta-firefly-dev">
   <linkfile src="local.conf" dest="build/conf/local.conf"/>
   <linkfile src="bblayers.conf" dest="build/conf/bblayers.conf"/>
   <linkfile src="setup-environment" dest="setup-environment"/>
