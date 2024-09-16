@@ -27,7 +27,7 @@ Yocto release 5.0 (scarthgap)
 2. FireFly dev: Git https://github.com/sgunin. Layers:
 + meta-firefly-dev - Кастомный слой для разработки под платформу.
 
-# Установка системы сборки Yocto в Ubuntu 18 
+# Установка системы сборки Yocto в Ubuntu 18 / 20
 ```
 $: sudo apt install -y repo
 $: sudo apt-get install repo git ssh make gcc libssl-dev liblz4-tool expect g++ patchelf chrpath gawk texinfo chrpath diffstat binfmt-support qemu-user-static live-build bison flex fakeroot cmake gcc-multilib g++-multilib unzip device-tree-compiler ncurses-dev
@@ -39,17 +39,9 @@ $: sudo locale-gen en_US.UTF-8
 ```
 $: mkdir <SomeDir>
 $: cd <SomeDir>
-$: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m default.xml -b scarthgap
+$: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m default.xml -b styhead
 $: repo sync
 ```
-
-В случае, если предполагается использовать слой meta-rockchip из репозитория https://gitlab.com/firefly-linux вместо https://github.com/JeffyCN, необходимо инициализировать следующим образом:
-```
-$: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m scarthgap.xml -b scarthgap
-$: repo sync
-```
-
-
 Настройка переменных среды и сборка образа image-minimal
 ```
 $: MACHINE=roc-rk3588-rt source setup-environment build
