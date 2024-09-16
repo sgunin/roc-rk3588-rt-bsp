@@ -2,12 +2,12 @@
 <manifest>
  <notice>Yocto release 5.1 (styhead)</notice>
 
- <default revision="styhead" sync-j="16" sync-c="true"/>
+ <default sync-j="16" sync-c="true"/>
 
- <remote name="oe" fetch="https://git.openembedded.org"/>
- <remote name="yocto" fetch="https://git.yoctoproject.org/git"/>
+ <remote name="oe" fetch="https://git.openembedded.org" revision="master"/>
+ <remote name="yocto" fetch="https://git.yoctoproject.org/git" revision="styhead"/>
  <remote name="jeffycn" fetch="https://github.com/JeffyCN" revision="master"/>
- <remote name="firefly-dev" fetch="https://github.com/sgunin"/>
+ <remote name="firefly-dev" fetch="https://github.com/sgunin" revision="styhead"/>
 
  <project name="poky" remote="yocto" path="sources/poky"/>
  <project name="meta-openembedded" remote="oe" path="sources/meta-openembedded"/>
