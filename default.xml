@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
- <notice>Yocto release 5.0 (scarthgap)</notice>
+ <notice>Yocto release 5.1 (styhead)</notice>
 
- <default revision="scarthgap" sync-j="8" sync-c="true"/>
+ <default revision="styhead" sync-j="16" sync-c="true"/>
 
  <remote name="oe" fetch="https://git.openembedded.org"/>
  <remote name="yocto" fetch="https://git.yoctoproject.org/git"/>
- <remote name="clang" fetch="https://github.com/kraj"/>
- <remote name="jeffycn" fetch="https://github.com/JeffyCN"/>
+ <remote name="jeffycn" fetch="https://github.com/JeffyCN" revision="master"/>
  <remote name="firefly-dev" fetch="https://github.com/sgunin"/>
 
  <project name="poky" remote="yocto" path="sources/poky"/>
