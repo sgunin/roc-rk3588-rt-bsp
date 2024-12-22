@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+ <notice>Yocto release 5.0 (scarthgap)</notice>
+
+ <default sync-j="8" sync-c="true"/>
+
+ <remote name="firefly-linux" fetch="https://gitlab.com/firefly-linux/yocto" revision="rk3588/firefly"/>
+ <remote name="firefly-dev" fetch="https://github.com/sgunin" revision="scarthgap"/>
+
+ <project name="poky" remote="firefly-linux" path="sources/poky"/>
+ <project name="meta-openembedded" remote="firefly-linux" path="sources/meta-openembedded"/>
+ <project name="meta-clang" remote="firefly-linux" path="sources/meta-clang"/>
+ <project name="meta-rockchip" remote="firefly-linux" path="sources/meta-rockchip"/>
+ <project name="meta-firefly-dev" remote="firefly-dev" path="sources/meta-firefly-dev">
+  <linkfile src="local.conf" dest="build/conf/local.conf"/>
+  <linkfile src="bblayers.conf" dest="build/conf/bblayers.conf"/>
+  <linkfile src="setup-environment" dest="setup-environment"/>
+ </project>
+			      
+</manifest>
