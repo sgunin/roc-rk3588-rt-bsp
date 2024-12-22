@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote fetch="." name="firefly-linux"/>
+  <remote fetch="https://gitlab.com/firefly-linux/yocto" name="firefly-linux"/>
   <default remote="firefly-linux" revision="rk3588/firefly" sync-j="4"/>
 
-  <project name="yocto/meta-openembedded" path="yocto/meta-openembedded" />
-  <project name="yocto/meta-qt5" path="yocto/meta-qt5" />
-  <project name="yocto/meta-rockchip" path="yocto/meta-rockchip" />
-  <project name="yocto/meta-clang" path="yocto/meta-clang" />
-  <project name="yocto/meta-browser" path="yocto/meta-browser" />
-  <project name="yocto/meta-lts-mixins" path="yocto/meta-lts-mixins" />
-  <project name="yocto/poky" path="yocto/poky" />
+  <project name="meta-openembedded" path="sources/meta-openembedded" />
+  <project name="meta-qt5" path="sources//meta-qt5" />
+  <project name="meta-rockchip" path="sources//meta-rockchip" />
+  <project name="meta-clang" path="sources//meta-clang" />
+  <project name="meta-browser" path="sources//meta-browser" />
+  <project name="meta-lts-mixins" path="sources//meta-lts-mixins" />
+  <project name="poky" path="sources//poky" />
 </manifest>
