@@ -9,7 +9,5 @@
   <project name="yocto/meta-clang" path="yocto/meta-clang" />
   <project name="yocto/meta-browser" path="yocto/meta-browser" />
   <project name="yocto/meta-lts-mixins" path="yocto/meta-lts-mixins" />
-  <project name="yocto/poky" path="yocto/poky" >
-    <linkfile dest="yocto/README.md" src="../../.repo/manifests/README_yocto.md"/>
-  </project>
+  <project name="yocto/poky" path="yocto/poky" />
 </manifest>
