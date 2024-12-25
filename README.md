@@ -40,18 +40,37 @@ $: sudo locale-gen en_US.UTF-8
 $: mkdir <SomeDir>
 $: cd <SomeDir>
 $: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m default.xml -b scarthgap
-$: repo sync
 ```
 
 В случае, если предполагается использовать слой meta-rockchip из репозитория https://gitlab.com/firefly-linux вместо https://github.com/JeffyCN, необходимо инициализировать следующим образом:
 ```
 $: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m scarthgap.xml -b scarthgap
+```
+
+В случае, если предполагается использовать оригинальную сборку, предоставляемую производитилем, необходимо выполнить
+```
+$: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m orig_scarthgap.xml -b scarthgap
+```
+
+Выполняем синхронизацию с внешними репозиториями
+```
 $: repo sync
 ```
 
-
 Настройка переменных среды и сборка образа image-minimal
 ```
-$: MACHINE=roc-rk3588-rt source setup-environment build
-$: bitbake core-image-minimal
+$: source setup-environment build
+$: MACHINE=roc-rk3588-rt bitbake core-image-minimal
 ```
+
+Для удаления лишних зависимостей (получения минимального дистрибутива) необходимо внести изменения в следующие файлы слоя meta-rockchip:
+1. sources/meta-rockchip/conf/machine/roc-rk3588-rt.conf
+   закоментировав следующие строки:
+   #require conf/machine/include/common.conf
+   #require conf/machine/include/demo.conf
+2. sources/meta-rockchip/conf/machine/firefly-rk3588.conf
+   закоментировав следующие строки:
+   #BB_NUMBER_THREADS = "4"
+   #PARALLEL_MAKE = "-j 4"
+3. sources/meta-rockchip/conf/machine/include/firefly.inc
+   удалить строчку rktoolkit из IMAGE_INSTALL:append
