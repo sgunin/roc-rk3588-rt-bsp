@@ -57,20 +57,22 @@ $: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.gi
 $: repo sync
 ```
 
-Настройка переменных среды и сборка образа image-minimal
+Выполняем настройку переменных среды окружения и сборку образа core-image-minimal для аппаратной конфигурации roc-rk3588rt
 ```
 $: source setup-environment build
+$: MACHINE=roc-rk3588rt bitbake core-image-minimal
+```
+
+Возможна сборка исходного образа Rockchip командой
+```
 $: MACHINE=roc-rk3588-rt bitbake core-image-minimal
 ```
 
-Для удаления лишних зависимостей (получения минимального дистрибутива) необходимо внести изменения в следующие файлы слоя meta-rockchip:
-1. sources/meta-rockchip/conf/machine/roc-rk3588-rt.conf
-   закоментировав следующие строки:
-   #require conf/machine/include/common.conf
-   #require conf/machine/include/demo.conf
-2. sources/meta-rockchip/conf/machine/firefly-rk3588.conf
-   закоментировав следующие строки:
-   #BB_NUMBER_THREADS = "4"
-   #PARALLEL_MAKE = "-j 4"
-3. sources/meta-rockchip/conf/machine/include/firefly.inc
-   удалить строчку rktoolkit из IMAGE_INSTALL:append
+Для удаления лишних зависимостей исходного образа Rockchip возможно внести изменения в следующие файлы слоя meta-rockchip:
+1. sources/meta-rockchip/conf/machine/roc-rk3588-rt.conf закоментировав следующие строки:
++ #require conf/machine/include/common.conf;
++ #require conf/machine/include/demo.conf;
+2. sources/meta-rockchip/conf/machine/firefly-rk3588.conf закоментировав следующие строки:
++ #BB_NUMBER_THREADS = "4";
++ #PARALLEL_MAKE = "-j 4";
+3. sources/meta-rockchip/conf/machine/include/firefly.inc удалить строчку rktoolkit из IMAGE_INSTALL:append.
