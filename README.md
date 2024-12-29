@@ -33,6 +33,15 @@ $: sudo apt-get install wget texinfo build-essential socat cpio python3 python3-
 $: sudo locale-gen en_US.UTF-8
 ```
 
+Дополнительные настойки Git, если они не сделаны ранее (где user - имя пользователя GitHub, github_pat_token - токен доступа к репозиторию https://github.com/sgunin/meta-firefly-dev)
+```
+$: git config --global user.email "you@example.com"
+$: git config --global user.name "Your Name"
+$: git config --global credential.helper store
+$: touch ~/.git-credentials
+$: echo "https://user:github_pat_token" >> ~/.git-credentials
+```
+
 Инициализация репозитория в каталог <SomeDir>, например, roc-rk3588-rt-bsp
 ```
 $: mkdir <SomeDir>
