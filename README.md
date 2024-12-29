@@ -29,7 +29,7 @@ Yocto release 5.0 (scarthgap)
 ```
 $: sudo apt install -y repo
 $: sudo apt-get install repo git ssh make gcc libssl-dev liblz4-tool expect g++ patchelf chrpath gawk texinfo chrpath diffstat binfmt-support qemu-user-static live-build bison flex fakeroot cmake gcc-multilib g++-multilib unzip device-tree-compiler ncurses-dev
-$: sudo apt-get install wget git-core texinfo build-essential socat cpio python python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm zstd
+$: sudo apt-get install wget texinfo build-essential socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm zstd
 $: sudo locale-gen en_US.UTF-8
 ```
 
