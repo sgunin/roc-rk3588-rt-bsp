@@ -39,7 +39,7 @@ $: git config --global user.email "you@example.com"
 $: git config --global user.name "Your Name"
 $: git config --global credential.helper store
 $: touch ~/.git-credentials
-$: echo "https://user:github_pat_token" >> ~/.git-credentials
+$: echo "https://user:github_pat_token@@github.com" >> ~/.git-credentials
 ```
 
 Инициализация репозитория в каталог <SomeDir>, например, roc-rk3588-rt-bsp
