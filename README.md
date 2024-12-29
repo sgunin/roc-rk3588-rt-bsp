@@ -25,11 +25,13 @@ Yocto release 5.0 (scarthgap)
 2. FireFly dev: Git https://github.com/sgunin. Layers:
 + meta-firefly-dev - Кастомный слой для разработки под платформу.
 
-# Установка системы сборки Yocto в Ubuntu 18 
+Внимание: сборка возможна в операционной системе сборки Yocto в Ubuntu 20.04 и 22.04. Сборка не работает в Ubuntu 24, а также Ubuntu любых версий в WSL. Для возможности сборки под Ubuntu 18 необходимо использовать repo из репозитория FireFly (repo init --repo-url https://gitlab.com/firefly-linux/git-repo.git).
+
+# Установка системы сборки Yocto в Ubuntu 20.04 и 22.04
 ```
 $: sudo apt install -y repo
-$: sudo apt-get install repo git ssh make gcc libssl-dev liblz4-tool expect g++ patchelf chrpath gawk texinfo chrpath diffstat binfmt-support qemu-user-static live-build bison flex fakeroot cmake gcc-multilib g++-multilib unzip device-tree-compiler ncurses-dev
-$: sudo apt-get install wget texinfo build-essential socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm zstd
+$: sudo apt install repo git ssh make gcc libssl-dev liblz4-tool expect g++ patchelf chrpath gawk texinfo chrpath diffstat binfmt-support qemu-user-static live-build bison flex fakeroot cmake gcc-multilib g++-multilib unzip device-tree-compiler ncurses-dev
+$: sudo apt install wget texinfo build-essential socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm zstd
 $: sudo locale-gen en_US.UTF-8
 ```
 
@@ -39,22 +41,33 @@ $: git config --global user.email "you@example.com"
 $: git config --global user.name "Your Name"
 $: git config --global credential.helper store
 $: touch ~/.git-credentials
-$: echo "https://user:github_pat_token@@github.com" >> ~/.git-credentials
+$: echo "https://user:github_pat_token@github.com" >> ~/.git-credentials
 ```
 
-Инициализация репозитория в каталог <SomeDir>, например, roc-rk3588-rt-bsp
+Внимание! Остальные действия выполняются не от имени привилегированного пользователя.
+
+Создаем каталог для сборки и делаем его текущим:
 ```
 $: mkdir <SomeDir>
 $: cd <SomeDir>
+```
+
+Возможные варианты сборки зависят от выбранного файла конфигурации:
+1. default.xml - в сборке используется мета слой meta-rockchip из персональной публичной ветки разработчика JeffyCN
+2. scarthgap.xml - в сборке используется мета слой meta-rockchip из публичной ветки производителя firefly-linux
+3. orig_scarthgap.xml - 
+
+Вариант №1. Инициализация сборки из персональной публичной ветки разработчика https://github.com/JeffyCN
+```
 $: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m default.xml -b scarthgap
 ```
 
-В случае, если предполагается использовать слой meta-rockchip из репозитория https://gitlab.com/firefly-linux вместо https://github.com/JeffyCN, необходимо инициализировать следующим образом:
+Вариант №3. Инициализация сборки из публичной ветки производителя https://gitlab.com/firefly-linux
 ```
 $: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m scarthgap.xml -b scarthgap
 ```
 
-В случае, если предполагается использовать оригинальную сборку, предоставляемую производитилем, необходимо выполнить
+Вариант №3. В случае, если предполагается использовать оригинальную сборку, предоставляемую производитилем, необходимо выполнить
 ```
 $: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m orig_scarthgap.xml -b scarthgap
 ```
