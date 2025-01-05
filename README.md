@@ -115,3 +115,9 @@ $ reboot loader
 ```
 $ sudo upgrade_tool LD
 ```
+
+Загружаем прошивку в устройство
+```
+$ sudo upgrade_tool wl 0 core-image-minimal-roc-rk3588rt-20241229181630.rootfs.wic
+$ sudo upgrade_tool uf core-image-minimal-roc-rk3588rt.update.img
+```
