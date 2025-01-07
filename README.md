@@ -118,6 +118,26 @@ $ sudo upgrade_tool LD
 
 Загружаем прошивку в устройство
 ```
-$ sudo upgrade_tool wl 0 core-image-minimal-roc-rk3588rt-20241229181630.rootfs.wic
+$ sudo upgrade_tool wl 0 core-image-minimal-roc-rk3588rt-20241229181630.rootfs.w md5sum $KBUILD_OUTPUT/arch/arm64/boot/dts/rockchip/roc-rk3588-rt.dtsic
 $ sudo upgrade_tool uf core-image-minimal-roc-rk3588rt.update.img
+```
+
+Для правки dts можно воспользоваться devshell
+```
+$ MACHINE=roc-rk3588rt bitbake virtual/kernel
+$ MACHINE=roc-rk3588rt bitbake virtual/kernel -c devshell
+# vi arch/arm64/boot/dts/rockchip/roc-rk3588-rt.dts
+# make roc-rk3588-rt.dts
+# exit
+```
+
+Для запуска процесса перекомпиляции необходимо изменить md5 сумму файла, проверить её можно командой
+```
+# md5sum $KBUILD_OUTPUT/arch/arm64/boot/dts/rockchip/roc-rk3588-rt.dts
+```
+
+Перекомпиляция запускается командой
+```
+$ MACHINE=roc-rk3588rt bitbake core-image-minimal -c cleanall
+$ MACHINE=roc-rk3588rt bitbake core-image-minimal
 ```
