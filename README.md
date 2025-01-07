@@ -18,9 +18,6 @@ Yocto release 5.0 (scarthgap)
 1. FireFly linux: Git https://gitlab.com/firefly-linux/yocto. Layers:
 + poky - Poky Build Tool and Metadata;
 + meta-openembedded - Collection of OpenEmbedded layers;
-+ meta-clang - Clang C/C++ cross compiler and runtime for OpenEmbedded/Yocto Project;
-+ meta-python2 - Layer enabling legacy python2 support after EOL;
-+ meta-qt5 - QT5 layer for openembedded;
 + meta-rockchip - Yocto BSP layer for the Rockchip SOC boards.
 2. FireFly dev: Git https://github.com/sgunin. Layers:
 + meta-firefly-dev - Кастомный слой для разработки под платформу.
