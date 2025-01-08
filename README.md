@@ -138,3 +138,8 @@ $ MACHINE=roc-rk3588rt bitbake virtual/kernel -c devshell
 $ MACHINE=roc-rk3588rt bitbake core-image-minimal -c cleanall
 $ MACHINE=roc-rk3588rt bitbake core-image-minimal
 ```
+
+Проверить состояние сервиса Android ADB на стороне платы можно командой
+```
+# systemctl status android-tools-adbd.service
+```
