@@ -18,52 +18,71 @@ Yocto release 5.0 (scarthgap)
 1. FireFly linux: Git https://gitlab.com/firefly-linux/yocto. Layers:
 + poky - Poky Build Tool and Metadata;
 + meta-openembedded - Collection of OpenEmbedded layers;
-+ meta-clang - Clang C/C++ cross compiler and runtime for OpenEmbedded/Yocto Project;
-+ meta-python2 - Layer enabling legacy python2 support after EOL;
-+ meta-qt5 - QT5 layer for openembedded;
 + meta-rockchip - Yocto BSP layer for the Rockchip SOC boards.
 2. FireFly dev: Git https://github.com/sgunin. Layers:
 + meta-firefly-dev - Кастомный слой для разработки под платформу.
 
-# Установка системы сборки Yocto в Ubuntu 18 
+Внимание: сборка возможна в операционной системе сборки Yocto в Ubuntu 20.04 и 22.04. Сборка не работает в Ubuntu 24, а также Ubuntu любых версий в WSL. Для возможности сборки под Ubuntu 18 необходимо использовать repo из репозитория FireFly (repo init --repo-url https://gitlab.com/firefly-linux/git-repo.git).
+
+# Установка системы сборки Yocto в Ubuntu 20.04 и 22.04
 ```
-$: sudo apt install -y repo
-$: sudo apt-get install repo git ssh make gcc libssl-dev liblz4-tool expect g++ patchelf chrpath gawk texinfo chrpath diffstat binfmt-support qemu-user-static live-build bison flex fakeroot cmake gcc-multilib g++-multilib unzip device-tree-compiler ncurses-dev
-$: sudo apt-get install wget git-core texinfo build-essential socat cpio python python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm zstd
-$: sudo locale-gen en_US.UTF-8
+$ sudo apt install -y repo
+$ sudo apt install repo git ssh make gcc libssl-dev liblz4-tool expect g++ patchelf chrpath gawk texinfo chrpath diffstat binfmt-support qemu-user-static live-build bison flex fakeroot cmake gcc-multilib g++-multilib unzip device-tree-compiler ncurses-dev
+$ sudo apt install wget texinfo build-essential socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm zstd
+$ sudo locale-gen en_US.UTF-8
 ```
 
-Инициализация репозитория в каталог <SomeDir>, например, roc-rk3588-rt-bsp
+Дополнительные настойки Git, если они не сделаны ранее (где user - имя пользователя GitHub, github_pat_token - токен доступа к репозиторию https://github.com/sgunin/meta-firefly-dev)
 ```
-$: mkdir <SomeDir>
-$: cd <SomeDir>
-$: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m default.xml -b scarthgap
-```
-
-В случае, если предполагается использовать слой meta-rockchip из репозитория https://gitlab.com/firefly-linux вместо https://github.com/JeffyCN, необходимо инициализировать следующим образом:
-```
-$: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m scarthgap.xml -b scarthgap
+$ git config --global user.email "you@example.com"
+$ git config --global user.name "Your Name"
+$ git config --global credential.helper store
+$ touch ~/.git-credentials
+$ echo "https://user:github_pat_token@github.com" >> ~/.git-credentials
 ```
 
-В случае, если предполагается использовать оригинальную сборку, предоставляемую производитилем, необходимо выполнить
+Внимание! Остальные действия выполняются не от имени привилегированного пользователя.
+
+Создаем каталог для сборки и делаем его текущим:
 ```
-$: repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m orig_scarthgap.xml -b scarthgap
+$ mkdir <SomeDir>
+$ cd <SomeDir>
+```
+
+Возможные варианты сборки зависят от выбранного файла конфигурации:
+1. default.xml - в сборке используется мета слой meta-rockchip из персональной публичной ветки разработчика JeffyCN
+2. scarthgap.xml - в сборке используется мета слой meta-rockchip из публичной ветки производителя firefly-linux
+3. orig_scarthgap.xml - 
+
+Вариант №1. Инициализация сборки из персональной публичной ветки разработчика https://github.com/JeffyCN
+```
+$ repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m default.xml -b scarthgap
+```
+
+Вариант №3. Инициализация сборки из публичной ветки производителя https://gitlab.com/firefly-linux
+```
+$ repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m scarthgap.xml -b scarthgap
+```
+
+Вариант №3. В случае, если предполагается использовать оригинальную сборку, предоставляемую производитилем, необходимо выполнить
+```
+$ repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m orig_scarthgap.xml -b scarthgap
 ```
 
 Выполняем синхронизацию с внешними репозиториями
 ```
-$: repo sync
+$ repo sync
 ```
 
 Выполняем настройку переменных среды окружения и сборку образа core-image-minimal для аппаратной конфигурации roc-rk3588rt
 ```
-$: source setup-environment build
-$: MACHINE=roc-rk3588rt bitbake core-image-minimal
+$ source setup-environment build
+$ MACHINE=roc-rk3588rt bitbake core-image-minimal
 ```
 
 Возможна сборка исходного образа Rockchip командой
 ```
-$: MACHINE=roc-rk3588-rt bitbake core-image-minimal
+$ MACHINE=roc-rk3588-rt bitbake core-image-minimal
 ```
 
 Для удаления лишних зависимостей исходного образа Rockchip возможно внести изменения в следующие файлы слоя meta-rockchip:
@@ -74,3 +93,53 @@ $: MACHINE=roc-rk3588-rt bitbake core-image-minimal
 + #BB_NUMBER_THREADS = "4";
 + #PARALLEL_MAKE = "-j 4";
 3. sources/meta-rockchip/conf/machine/include/firefly.inc удалить строчку rktoolkit из IMAGE_INSTALL:append.
+
+Для загрузки прошивки в устройство необходимо перевести его в режим загрузки. Возможно 2 варианта - аппаратно, на 2 секунды зажать кнопку Recovery и подать питание на устройство или использовать adb.
+Устраняем проблемы с root привилегиями adb
+```
+$ adb kill-server
+$ sudo adb start-server
+$ sudo adb devices
+```
+
+Перезагружаем устройство в режим загрузки
+```
+$ sudo adb shell
+$ reboot loader
+```
+
+После перезагрузки будет доступен режим
+```
+$ sudo upgrade_tool LD
+```
+
+Загружаем прошивку в устройство
+```
+$ sudo upgrade_tool wl 0 core-image-minimal-roc-rk3588rt-20241229181630.rootfs.wic
+$ sudo upgrade_tool uf core-image-minimal-roc-rk3588rt.update.img
+```
+
+Для правки dts можно воспользоваться devshell
+```
+$ MACHINE=roc-rk3588rt bitbake virtual/kernel
+$ MACHINE=roc-rk3588rt bitbake virtual/kernel -c devshell
+# vi arch/arm64/boot/dts/rockchip/roc-rk3588-rt.dts
+# make roc-rk3588-rt.dts
+# exit
+```
+
+Для запуска процесса перекомпиляции необходимо изменить md5 сумму файла, проверить её можно командой
+```
+# md5sum $KBUILD_OUTPUT/arch/arm64/boot/dts/rockchip/roc-rk3588-rt.dts
+```
+
+Перекомпиляция запускается командой
+```
+$ MACHINE=roc-rk3588rt bitbake core-image-minimal -c cleanall
+$ MACHINE=roc-rk3588rt bitbake core-image-minimal
+```
+
+Проверить состояние сервиса Android ADB на стороне платы можно командой
+```
+# systemctl status android-tools-adbd.service
+```
