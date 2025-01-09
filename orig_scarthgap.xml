@@ -5,8 +5,8 @@
  <default sync-j="8" sync-c="true"/>
 
  <remote name="firefly-linux" fetch="https://gitlab.com/firefly-linux/yocto" revision="rk3588/firefly"/>
- <remote name="firefly-dev" fetch="https://github.com/sgunin" revision="scarthgap"/>
  <remote name="oe-core" fetch="https://git.openembedded.org/openembedded-core" revision="scarthgap"/>
+ <remote name="firefly-dev" fetch="https://github.com/sgunin" revision="scarthgap"/>
 
  <project name="poky" remote="firefly-linux" path="sources/poky"/>
  <project name="meta-openembedded" remote="firefly-linux" path="sources/meta-openembedded"/>
