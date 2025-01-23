@@ -139,6 +139,11 @@ $ MACHINE=roc-rk3588rt bitbake core-image-minimal -c cleanall
 $ MACHINE=roc-rk3588rt bitbake core-image-minimal
 ```
 
+Правка ядра запускается командой
+```
+$ MACHINE=roc-rk3588rt bitbake linux-rockchip -c menuconfig
+```
+
 Проверить состояние сервиса Android ADB на стороне платы можно командой
 ```
 # systemctl status android-tools-adbd.service
