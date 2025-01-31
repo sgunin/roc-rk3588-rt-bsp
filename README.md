@@ -19,8 +19,9 @@ Yocto release 5.0 (scarthgap)
 + poky - Poky Build Tool and Metadata;
 + meta-openembedded - Collection of OpenEmbedded layers;
 + meta-rockchip - Yocto BSP layer for the Rockchip SOC boards.
-2. FireFly dev: Git https://github.com/sgunin. Layers:
-+ meta-firefly-dev - Кастомный слой для разработки под платформу.
+2. Дополнительные слои:
++ meta-firefly-dev - Кастомный слой для разработки под платформу из ветки https://github.com/sgunin;
++ meta-hikvision - Кастомный слой c SDK камеры HikRobot.
 
 Внимание: сборка возможна в операционной системе сборки Yocto в Ubuntu 20.04 и 22.04. Сборка не работает в Ubuntu 24, а также Ubuntu любых версий в WSL. Для возможности сборки под Ubuntu 18 необходимо использовать repo из репозитория FireFly (repo init --repo-url https://gitlab.com/firefly-linux/git-repo.git).
 
@@ -50,52 +51,52 @@ $ cd <SomeDir>
 ```
 
 Возможные варианты сборки зависят от выбранного файла конфигурации:
-1. default.xml - в сборке используется мета слой meta-rockchip из персональной публичной ветки разработчика JeffyCN
-2. scarthgap.xml - в сборке используется мета слой meta-rockchip из публичной ветки производителя firefly-linux
-3. orig_scarthgap.xml - 
+1. default.xml - в сборке используется мета слой meta-rockchip из персональной публичной ветки разработчика [JeffyCN](https://github.com/JeffyCN). Не имеет работающих dts под roc-rk3588rt.
+2. scarthgap.xml - в сборке используется мета слой meta-rockchip из публичной ветки производителя RockChip - firefly-linux. На данный момент это предпочтительный и самый стабильный вариант сборки образа.
+3. orig_scarthgap.xml - оригинальная сборка от производителя. Включает много лишних слоев и зависимостей, сильно увеличивающих размер и время сборки.
 
-Вариант №1. Инициализация сборки из персональной публичной ветки разработчика https://github.com/JeffyCN
-```
-$ repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m default.xml -b scarthgap
-```
-
-Вариант №3. Инициализация сборки из публичной ветки производителя https://gitlab.com/firefly-linux
+Инициализируем каталог сборки вариантом конфигурации №2 (для вновь созданного каталога):
 ```
 $ repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m scarthgap.xml -b scarthgap
 ```
 
-Вариант №3. В случае, если предполагается использовать оригинальную сборку, предоставляемую производитилем, необходимо выполнить
-```
-$ repo init --no-clone-bundle -u https://github.com/sgunin/roc-rk3588-rt-bsp.git -m orig_scarthgap.xml -b scarthgap
-```
-
-Выполняем синхронизацию с внешними репозиториями
+Если каталог был инициализирован ранее, или в ветки репозиториев вносились изменения, выполняем синхронизацию:
 ```
 $ repo sync
 ```
 
-Выполняем настройку переменных среды окружения и сборку образа core-image-minimal для аппаратной конфигурации roc-rk3588rt
+Выполняем настройку переменных среды окружения (если не было сделано ранее)
 ```
 $ source setup-environment build
-$ MACHINE=roc-rk3588rt bitbake core-image-minimal
 ```
 
-Возможна сборка исходного образа Rockchip командой
+Конфигурация scarthgap.xml через слой meta-firefly-dev предоставляет для сборки следующие варианты образов
+1. rk3588-core-image-minimal - образ с минимальным количеством компонентов;
+2. rk3588-core-image-minimal-x11 - образ с поддержкой Х11;
+3. rk3588-core-image-minimal-x11-dev - образ с поддержкой средств разработки.
+
+Cборка необходимого образа выполняется командой
 ```
-$ MACHINE=roc-rk3588-rt bitbake core-image-minimal
+$ MACHINE=roc-rk3588rt bitbake rk3588-core-image-minimal-x11-dev
 ```
 
-Для удаления лишних зависимостей исходного образа Rockchip возможно внести изменения в следующие файлы слоя meta-rockchip:
-1. sources/meta-rockchip/conf/machine/roc-rk3588-rt.conf закоментировав следующие строки:
-+ #require conf/machine/include/common.conf;
-+ #require conf/machine/include/demo.conf;
-2. sources/meta-rockchip/conf/machine/firefly-rk3588.conf закоментировав следующие строки:
-+ #BB_NUMBER_THREADS = "4";
-+ #PARALLEL_MAKE = "-j 4";
-3. sources/meta-rockchip/conf/machine/include/firefly.inc удалить строчку rktoolkit из IMAGE_INSTALL:append.
+В результате сборки в каталоге tmp/deploy/images/roc-rk3588rt будут сформированы следующие файлы:
+```
+-rw-r--r-- 1 sg sg       5156 янв 31 12:45 rk3588-core-image-minimal-x11-dev.env
+-rw-r--r-- 1 sg sg        795 янв 31 12:45 rk3588-core-image-minimal-x11-dev-generic-gptdisk.wks
+-rw-r--r-- 1 sg sg 1598046208 янв 31 12:45 rk3588-core-image-minimal-x11-dev-roc-rk3588rt-20250131094328.rootfs.ext4
+-rw-r--r-- 1 sg sg      37825 янв 31 12:45 rk3588-core-image-minimal-x11-dev-roc-rk3588rt-20250131094328.rootfs.manifest
+-rw-r--r-- 1 sg sg  356673188 янв 31 12:45 rk3588-core-image-minimal-x11-dev-roc-rk3588rt-20250131094328.rootfs.tar.gz
+-rw-r--r-- 1 sg sg 2446575616 янв 31 12:46 rk3588-core-image-minimal-x11-dev-roc-rk3588rt-20250131094328.rootfs.wic
+-rw-r--r-- 1 sg sg     346586 янв 31 12:45 rk3588-core-image-minimal-x11-dev-roc-rk3588rt-20250131094328.testdata.json
+-rw-r--r-- 1 sg sg        275 янв 31 12:46 rk3588-core-image-minimal-x11-dev-roc-rk3588rt.package-file
+-rw-r--r-- 1 sg sg        378 янв 31 12:46 rk3588-core-image-minimal-x11-dev-roc-rk3588rt.parameter
+-rw-r--r-- 1 sg sg 2037686858 янв 31 12:46 rk3588-core-image-minimal-x11-dev-roc-rk3588rt.update.img
+...
+```
 
 Для загрузки прошивки в устройство необходимо перевести его в режим загрузки. Возможно 2 варианта - аппаратно, на 2 секунды зажать кнопку Recovery и подать питание на устройство или использовать adb.
-Устраняем проблемы с root привилегиями adb
+При первом использовании необходимо устранить проблемы с привилегиями для adb
 ```
 $ adb kill-server
 $ sudo adb start-server
@@ -108,16 +109,18 @@ $ sudo adb shell
 $ reboot loader
 ```
 
-После перезагрузки будет доступен режим
+После перезагрузки будет доступен режим обновления
 ```
 $ sudo upgrade_tool LD
 ```
 
 Загружаем прошивку в устройство
 ```
-$ sudo upgrade_tool wl 0 core-image-minimal-roc-rk3588rt-20241229181630.rootfs.wic
-$ sudo upgrade_tool uf core-image-minimal-roc-rk3588rt.update.img
+$ sudo upgrade_tool wl 0 rk3588-core-image-minimal-x11-dev-roc-rk3588rt-20250131094328.rootfs.wic
+$ sudo upgrade_tool uf rk3588-core-image-minimal-x11-dev-roc-rk3588rt.update.img
 ```
+
+На устройстве создан пользователь root/firefly.
 
 Для правки dts можно воспользоваться devshell
 ```
